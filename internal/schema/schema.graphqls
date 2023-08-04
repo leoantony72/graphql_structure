@@ -1,0 +1,16 @@
+
+
+type User{
+    id: String!
+    name: String!
+    age: Int!
+}
+
+input GetUserById{
+    id: String!
+}
+
+type Query{
+    users:[User!]!
+    user(input: GetUserById):User!
+}
