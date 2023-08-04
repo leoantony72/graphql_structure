@@ -9,6 +9,14 @@ import (
 	"test/internal/model"
 )
 
+// CreateUser is the resolver for the createUser field.
+func (r *mutationResolver) CreateUser(ctx context.Context, input model.NewUser) (*model.User, error) {
+	// panic(fmt.Errorf("not implemented: CreateUser - createUser"))
+	user := &model.User{Name: input.Name, Age: input.Age}
+	data := r.repo.CreateUser(user)
+	return data, nil
+}
+
 // Users is the resolver for the users field.
 func (r *queryResolver) Users(ctx context.Context) ([]*model.User, error) {
 	// panic(fmt.Errorf("not implemented: Users - users"))
@@ -22,7 +30,11 @@ func (r *queryResolver) User(ctx context.Context, input *model.GetUserByID) (*mo
 	return data, nil
 }
 
+// Mutation returns MutationResolver implementation.
+func (r *Resolver) Mutation() MutationResolver { return &mutationResolver{r} }
+
 // Query returns QueryResolver implementation.
 func (r *Resolver) Query() QueryResolver { return &queryResolver{r} }
 
+type mutationResolver struct{ *Resolver }
 type queryResolver struct{ *Resolver }

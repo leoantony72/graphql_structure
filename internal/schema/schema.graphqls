@@ -14,3 +14,12 @@ type Query{
     users:[User!]!
     user(input: GetUserById):User!
 }
+
+input NewUser{
+    name: String!
+    age: Int!
+}
+
+type Mutation{
+    createUser(input:NewUser!):User!
+}

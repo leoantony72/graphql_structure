@@ -3,10 +3,7 @@ package main
 import (
 	"test/database"
 	"test/internal/graph"
-	"test/internal/handlers"
-	"test/internal/middleware"
 	"test/internal/repositories"
-	"test/internal/services"
 
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/playground"
